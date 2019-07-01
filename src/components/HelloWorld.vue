@@ -27,14 +27,56 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+
+    <div class="container">
+      {{ user }}
+    </div>
   </div>
 </template>
 
 <script>
+import { userService } from '@/services/UserService'
+import { mixin1, mixin2, mixin3 } from '@/mixins/mixin'
+
 export default {
+  mixins: [mixin1, mixin2, mixin3],
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      errors: [],
+      posts: []
+    }
+  },
+  created () {
+
+
+    /* userService.getUsers()
+      .then(response => {
+        console.log(response);
+      }).catch( error =>{
+        this.errors.push(error);
+        alert(error)
+      });
+    
+    userService.getUserPosts()
+      .then(response => {
+        console.log(response);
+      }).catch( error =>{
+        this.errors.push(error);
+        alert(error)
+      });
+  
+    console.log(this.posts, 'Postovi!!!'); */
+
+    this.user = 'Dragana';
+    this.getUserName();
+  },
+
+  mounted () {
+    
   }
 }
 </script>
